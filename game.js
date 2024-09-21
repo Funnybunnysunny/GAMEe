@@ -6,14 +6,16 @@ canvas.width = 800;
 canvas.height = 600;
 
 // Player variables
-let playerX = canvas.width / 2;
-let playerY = canvas.height - 30;
+const playerWidth = 50;
+const playerHeight = 30; // Make the player box shorter
+let playerX = (canvas.width - playerWidth) / 2; // Start in the middle horizontally
+let playerY = (canvas.height - playerHeight) / 2; // Start in the middle vertically
 let playerSpeed = 5;
 
 // Draw player function
 function drawPlayer() {
   ctx.fillStyle = 'lime';
-  ctx.fillRect(playerX, playerY, 50, 50); // Drawing a simple square for player
+  ctx.fillRect(playerX, playerY, playerWidth, playerHeight); // Drawing a shorter rectangle for the player
 }
 
 // Listen for keypress events
@@ -25,23 +27,4 @@ function movePlayer(event) {
   } else if (event.key === 'ArrowRight') {
     playerX += playerSpeed; // Move right
   } else if (event.key === 'ArrowUp') {
-    playerY -= playerSpeed; // Move up
-  } else if (event.key === 'ArrowDown') {
-    playerY += playerSpeed; // Move down
-  }
-}
-
-// Game loop
-function gameLoop() {
-  // Clear the canvas
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Draw the player
-  drawPlayer();
-
-  // Call game loop again
-  requestAnimationFrame(gameLoop);
-}
-
-// Start the game
-gameLoop();
+    playerY -= playerSpeed; // Move
